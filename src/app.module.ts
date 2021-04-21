@@ -20,15 +20,16 @@ import GenreEntity from './db/genre.entity';
         ),
 
         TypeOrmModule.forRoot({
-          type: "sqlite",
-          database: "./database.sqlite",
-          synchronize: true,
+          type: "postgres",     
+          host: "localhost",     
+          port: 5432,     
+          username: "postgres",
+          password: "shakiba-db",     
+          database: "books",
           entities: [
             "dist/db/**/*.js"
           ],
-          cli: {
-            "entitiesDir": "src/db"
-          }
+          synchronize: true 
         }),
   ],
   controllers: [AppController],
