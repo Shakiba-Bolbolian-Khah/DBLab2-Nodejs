@@ -1,4 +1,7 @@
+import { IsNotEmpty } from "class-validator";
+
 export default class EditProjectDto {
+    @IsNotEmpty()
     readonly id: number;
     readonly field: string;
     readonly subfield: string;

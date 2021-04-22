@@ -60,6 +60,9 @@ export default class JobseekersService {
       }
       (await emp).projects = projects;
     }
+
+    EmpEntity.update(empDetails.id, await emp);
+
     return emp
   }
 
@@ -113,6 +116,8 @@ export default class JobseekersService {
     if(freDetails.phone)
       (await fre).phone = freDetails.phone;
     
+    FreelanceEntity.update(freDetails.id, await fre);
+
     return fre
   }
 
@@ -184,6 +189,8 @@ export default class JobseekersService {
     if(details.deadline)
       (await pro).deadline = details.deadline;
 
+    ProEntity.update(details.id, await pro);
+
     return pro
   }
 
@@ -201,7 +208,6 @@ export default class JobseekersService {
     ProEntity.delete({id:proID});
     return pro;
   }
-
   
   async upgradeAccount(details: UpgradAccDto): Promise<FreelanceEntity> {
     let fre = FreelanceEntity.findOne({where:{id:details.id}});
@@ -230,6 +236,8 @@ export default class JobseekersService {
     
     if(details.autoextensive)
       (await fre).autoextensive = details.autoextensive;
+
+    FreelanceEntity.update(details.id, await fre);
 
     return fre
   }

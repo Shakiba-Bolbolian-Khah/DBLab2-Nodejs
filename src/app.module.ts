@@ -3,21 +3,16 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HelloModule } from './hello/hello.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from './db/user/user.module';
 import { JobseekersModule } from './jobseekers/jobseekers.module';
-import BooksModule from './db/books/books.module';
-import GenreModule from './db/genre/genre.module';
-import UserEntity from './db/user.entity';
-import BookEntity from './db/book.entity';
-import GenreEntity from './db/genre.entity';
+import EmpEntity from './db/employer.entity';
+import FreelanceEntity from './db/freelancer.entity';
+import ProEntity from './db/projects.entity';
 
 @Module({
   imports: [HelloModule,
-        UserModule ,
-        BooksModule,
-        GenreModule,
+        JobseekersModule,
         TypeOrmModule.forFeature(
-        [UserEntity, BookEntity , GenreEntity],
+        [EmpEntity, FreelanceEntity, ProEntity],
         ),
 
         TypeOrmModule.forRoot({
@@ -32,7 +27,6 @@ import GenreEntity from './db/genre.entity';
           ],
           synchronize: true 
         }),
-
         JobseekersModule,
   ],
   controllers: [AppController],
