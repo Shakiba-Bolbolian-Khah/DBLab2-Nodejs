@@ -25,7 +25,7 @@ import GenreEntity from './db/genre.entity';
           port: 5432,     
           username: "postgres",
           password: "shakiba-db",     
-          database: "books",
+          database: "jobseekers",
           entities: [
             "dist/db/**/*.js"
           ],
