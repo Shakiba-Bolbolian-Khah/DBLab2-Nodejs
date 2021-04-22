@@ -147,6 +147,7 @@ export default class JobseekersService {
     project.subfield = details.subfield;
     project.title = details.title;
     project.desc = details.desc;
+    project.size = details.size;
     project.deadline = details.deadline;
     project.budget = details.budget;
     project.employer = await EmpEntity.findOne(details.employerID) ;
@@ -225,6 +226,9 @@ export default class JobseekersService {
 
     if(details.autoextensive)
       (await fre).autoextensive = details.autoextensive;
+
+    
+    FreelanceEntity.update(details.id, await fre);
 
     return fre;
   }

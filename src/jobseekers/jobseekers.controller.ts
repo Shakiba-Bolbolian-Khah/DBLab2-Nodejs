@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Put, Header, Delete, Param } from '@nestjs/common';
+import { Body, ParseIntPipe, Controller, Get, Post, Put, Header, Delete, Param } from '@nestjs/common';
 import {ApiResponse } from '@nestjs/swagger';
 import JobseekersService from './jobseekers.service';
 import CreateEmpDto from './dto/create-emp.dto';
@@ -35,8 +35,8 @@ export class JobseekersController {
   @Delete('employers/delete')
   @ApiResponse({ status:200, description:'Delete existed employer' })
   @Header('Content-Type', 'application/json')
-  async deleteEmp( @Body() empID: number ) {
-    return this.jobService.deleteEmployer(empID);
+  async deleteEmp( @Body('id', ParseIntPipe) id: number ) {
+    return this.jobService.deleteEmployer(id);
   }
 
   @Post('projects/post')
@@ -60,8 +60,8 @@ export class JobseekersController {
   @Delete('projects/delete')
   @ApiResponse({ status:200, description:'Delete existed project' })
   @Header('Content-Type', 'application/json')
-  async deleteProj( @Body() proID: number ) {
-    return this.jobService.deleteProject(proID);
+  async deleteProj( @Body('id', ParseIntPipe) id: number  ) {
+    return this.jobService.deleteProject(id);
   }
 
   @Post('freelancers/post')
@@ -86,7 +86,7 @@ export class JobseekersController {
   @Delete('freelancers/delete')
   @ApiResponse({ status:200, description:'Delete existed freelancer' })
   @Header('Content-Type', 'application/json')
-  async deleteFre( @Body() id: number ) {
+  async deleteFre( @Body('id', ParseIntPipe) id: number ) {
     console.log(id)
     return this.jobService.deleteFreelancer(id);
   }
