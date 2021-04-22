@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { HelloModule } from './hello/hello.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './db/user/user.module';
+import { JobseekersModule } from './jobseekers/jobseekers.module';
 import BooksModule from './db/books/books.module';
 import GenreModule from './db/genre/genre.module';
 import UserEntity from './db/user.entity';
@@ -25,12 +26,14 @@ import GenreEntity from './db/genre.entity';
           port: 5432,     
           username: "postgres",
           password: "shakiba-db",     
-          database: "jobseekers",
+          database: "Jobseeker",
           entities: [
             "dist/db/**/*.js"
           ],
           synchronize: true 
         }),
+
+        JobseekersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

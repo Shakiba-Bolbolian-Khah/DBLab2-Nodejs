@@ -31,6 +31,6 @@ export default class FreelanceEntity extends BaseEntity
   @Column()
   autoextensive: boolean;
 
-  @Column({ type: 'date' })
-  expiration: string;
+  @Column()
+  expiration: number;
 }

@@ -20,8 +20,8 @@ export default class ProjectEntity extends BaseEntity
   @Column({ length: 1500 })
   desc: string;
   
-  @Column("string", { array: true })
-  skills: string[];
+  @Column({ length: 1500 })
+  skills: string;
 
   @Column() //1 to 6
   size: number;
@@ -35,8 +35,8 @@ export default class ProjectEntity extends BaseEntity
   @Column()
   finalCost: number;
 
-  @Column({ type: 'date' })
-  deadline: string;
+  @Column()
+  deadline: number;
 
 
   @ManyToOne(() => Employer, employer => employer.projects)
